@@ -2,6 +2,13 @@
 
 namespace App\Providers;
 
+use Carbon\CarbonImmutable;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +26,71 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $this->configureTimezone();
+        $this->configureSchema();
+        $this->configureCommands();
+        $this->configureModels();
+        $this->configureDates();
+        $this->configureUrls();
+        $this->configureVite();
+    }
+
+    /**
+     * Configure the application's timezone.
+     */
+    private function configureTimezone(): void
+    {
+        date_default_timezone_set(timezoneId: config('app.timezone'));
+    }
+
+    /**
+     * Configure the application's commands.
+     */
+    private function configureCommands(): void
+    {
+        DB::prohibitDestructiveCommands(
+            prohibit: $this->app->isProduction()
+        );
+    }
+
+    /**
+     * Configure the database schema.
+     */
+    private function configureSchema(): void
+    {
+        Schema::defaultStringLength(length: 191);
+    }
+
+    /**
+     * Configure the dates.
+     */
+    private function configureDates(): void
+    {
+        Date::use(handler: CarbonImmutable::class);
+    }
+
+    /**
+     * Configure the models.
+     */
+    private function configureModels(): void
+    {
+        Model::shouldBeStrict();
+        Model::unguard();
+    }
+
+    /**
+     * Configure the application's URLs.
+     */
+    private function configureUrls(): void
+    {
+        URL::forceScheme(scheme: 'https');
+    }
+
+    /**
+     * Configure the application's Vite instance.
+     */
+    private function configureVite(): void
+    {
+        Vite::useAggressivePrefetching();
     }
 }

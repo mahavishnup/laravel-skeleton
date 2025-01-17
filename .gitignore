@@ -21,3 +21,6 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+/database/backups/*.sql
+debugbar
+.DS_Store
