@@ -61,7 +61,6 @@
         "dev": "npx concurrently -c \"#93c5fd,#c4b5fd,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"npm run dev\" --names='server,queue,vite'",
         "test:types": "phpstan analyse",
         "test:typos": "peck",
-        "test:arch": "pest --filter=arch",
         "test:type-coverage": "pest --type-coverage --min=100",
         "test:unit": "pest --parallel --coverage --exactly=100",
         "refactor": "rector",
@@ -77,7 +76,6 @@
         "test": [
             "@test:types",
             "@test:typos",
-            "@test:arch",
             "@test:type-coverage",
             "@test:unit",
             "@test:refactor",
