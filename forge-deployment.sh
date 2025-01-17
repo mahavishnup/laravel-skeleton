@@ -36,6 +36,6 @@ if [ -f artisan ]; then
     $FORGE_PHP artisan migrate --force
 fi
 
-# $FORGE_PHP artisan pulse:restart
+$FORGE_PHP artisan pulse:restart
 
 $FORGE_PHP artisan up

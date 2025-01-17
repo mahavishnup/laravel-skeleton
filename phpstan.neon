@@ -7,7 +7,7 @@ parameters:
 
     paths:
         - app
-        #- config
-        #- bootstrap
-        #- database/factories
-        #- routes
+        - config
+        - bootstrap
+        - database/factories
+        - routes
