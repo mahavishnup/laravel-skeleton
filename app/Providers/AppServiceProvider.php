@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Providers;
 
 use Carbon\CarbonImmutable;
@@ -11,7 +13,7 @@ use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
+final class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
@@ -26,21 +28,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->configureTimezone();
         $this->configureSchema();
         $this->configureCommands();
         $this->configureModels();
         $this->configureDates();
         $this->configureUrls();
         $this->configureVite();
-    }
-
-    /**
-     * Configure the application's timezone.
-     */
-    private function configureTimezone(): void
-    {
-        date_default_timezone_set(timezoneId: config('app.timezone'));
     }
 
     /**
