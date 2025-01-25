@@ -1,6 +1,46 @@
 {
     "preset": "laravel",
+    "exclude": ["packages", "app/Policies"],
     "rules": {
+        "blank_line_before_statement": true,
+        "concat_space": {
+            "spacing": "one"
+        },
+        "method_argument_space": true,
+        "multiline_comment_opening_closing": true,
+        "no_unused_imports": true,
+        "nullable_type_declaration_for_default_null_value": {
+            "use_nullable_type_declaration": true
+        },
+        "types_spaces": {
+            "space": "single"
+        },
+        "indentation_type": true,
+        "array_indentation": true,
+        "array_syntax": {
+            "syntax": "short"
+        },
+        "braces": {
+            "allow_single_line_anonymous_class_with_empty_body": true,
+            "allow_single_line_closure": true,
+            "position_after_anonymous_constructs": "same",
+            "position_after_control_structures": "same",
+            "position_after_functions_and_oop_constructs": "next"
+        },
+        "cast_spaces": {
+            "space": "single"
+        },
+        "binary_operator_spaces": {
+            "operators": {
+                "=>": "align_single_space_minimal"
+            }
+        },
+        "list_syntax": {
+            "syntax": "short"
+        },
+        "blank_line_after_namespace": true,
+        "blank_line_after_opening_tag": true,
+        "use_arrow_functions": true,
         "array_push": true,
         "backtick_to_shell_exec": true,
         "date_time_immutable": true,
