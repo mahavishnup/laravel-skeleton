@@ -10,25 +10,25 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "laravel/framework": "^11.31",
-        "laravel/tinker": "^2.9"
+        "laravel/framework": "^11.39.1",
+        "laravel/tinker": "^2.10"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.14",
         "barryvdh/laravel-ide-helper": "^3.5",
-        "fakerphp/faker": "^1.23",
-        "larastan/larastan": "^3.0",
-        "laravel/pail": "^1.1",
-        "laravel/pint": "^1.13",
-        "laravel/sail": "^1.26",
-        "mockery/mockery": "^1.6",
-        "nunomaduro/collision": "^8.1",
+        "fakerphp/faker": "^1.24.1",
+        "larastan/larastan": "^3.0.2",
+        "laravel/pail": "^1.2.1",
+        "laravel/pint": "^1.20",
+        "laravel/sail": "^1.40",
+        "mockery/mockery": "^1.6.12",
+        "nunomaduro/collision": "^8.5",
         "peckphp/peck": "^0.1.1",
-        "pestphp/pest": "^3.7",
+        "pestphp/pest": "^3.7.2",
         "pestphp/pest-plugin-laravel": "^3.0",
         "pestphp/pest-plugin-stressless": "^3.1",
-        "pestphp/pest-plugin-type-coverage": "^3.2",
-        "rector/rector": "^2.0"
+        "pestphp/pest-plugin-type-coverage": "^3.2.3",
+        "rector/rector": "^2.0.7"
     },
     "autoload": {
         "psr-4": {
@@ -58,8 +58,11 @@
             "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
             "@php artisan migrate --graceful --ansi"
         ],
-        "dev": "npx concurrently -c \"#93c5fd,#c4b5fd,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"npm run dev\" --names='server,queue,vite'",
-        "test:types": "phpstan analyse",
+        "dev": [
+            "Composer\\Config::disableProcessTimeout",
+            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
+        ],
+        "test:types": "phpstan",
         "test:typos": "peck",
         "test:type-coverage": "pest --type-coverage --min=100",
         "test:unit": "pest --parallel --coverage --exactly=100",
