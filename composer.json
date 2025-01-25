@@ -82,8 +82,7 @@
             "@test:type-coverage",
             "@test:unit",
             "@test:refactor",
-            "@test:lint",
-            "@helper"
+            "@test:lint"
         ]
     },
     "extra": {
