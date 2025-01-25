@@ -69,7 +69,7 @@ arch('models')
         'App\Actions',
         'App\Services',
         'Database\Factories',
-        'Database\Seeders', // will be removed in the next PR as removing it gets outside of this PR scope
+        'Database\Seeders',
     ]);
 
 arch('actions')
